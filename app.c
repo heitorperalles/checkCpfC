@@ -47,7 +47,7 @@ int main(int argc, char **argv) {
 	}
 
 	printf("CPF:     %s\n", argv[1]);
-	auto cpfValidationCode = validateCpf(argv[1]);
+	int cpfValidationCode = validateCpf(argv[1]);
 	const char * status;
 	const char * message;
 	switch (cpfValidationCode) {
