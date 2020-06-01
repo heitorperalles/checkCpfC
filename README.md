@@ -95,7 +95,7 @@ The CPFs provided by SERPRO for testing are:
 
 The application is composed by a set of source code files:
 
-**app.cxx** : Main file, with `main()` function.<br>
+**app.c** : Main file, with `main()` function.<br>
 
 **middleware.h** : C header file with definitions of functions and SERPRO structures.<br>
 **middleware.c** : C source file with the core implementation of the REQUEST to SERPRO service.
