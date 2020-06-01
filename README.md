@@ -1,7 +1,7 @@
-# checkCpfCxx
+# checkCpfC
 
 Command line tool to verify physical person registers status on Brazilian entities.<br>
-A pure C++ solution that links with the library [CURL](https://curl.haxx.se) to manage HTTP requests.
+A pure C solution that links with the library [CURL](https://curl.haxx.se) to manage HTTP requests.
 
 The binary receives a CPF (Brazilian Physical Person Register) to be checked.<br>
 Then the CPF is validated on SERPRO (Brazilian Federal Data Processing Service) that uses a RESTful API.<br>
@@ -10,15 +10,14 @@ The HTTP request implementation uses libCurl implementation ([github.com/curl](h
 
 ## Quick Start (on Linux)
 
-### Install GNU g++ compiler
+### Install GNU gcc compiler
 ```bash
-sudo apt install g++
+sudo apt install gcc
 ```
-This application was tested with g++ release `9.3.0`. To check the installed version of g++, run:
+This application was tested with gcc release `9.3.0`. To check the installed version of gcc, run:
 ```bash
-g++ --version
+gcc --version
 ```
-Also, the C++ version required to compile is `std=c++11` or later.
 
 ### Install lib Curl for Development
 ```bash
@@ -26,10 +25,10 @@ sudo apt-get install libcurl-dev
 ```
 This application was tested with the library `libcurl4-openssl-dev` on release `7.68.0`
 
-### Build and run checkCpfCxx (from the project root folder)
+### Build and run checkCpfC (from the project root folder)
 ```bash
-g++ -o checkCpfCxx *.cxx -lcurl
-./checkCpfCxx 123456789
+gcc -o checkCpfC *.c -lcurl
+./checkCpfC 123456789
 ```
 Assuming that *123456789* is a CPF to be checked.<br>
 Attention: The `-lcurl` flag is necessary to link with the installed Curl library.
@@ -63,7 +62,7 @@ MESSAGE:  CPF not regular or not existant
 #### Call the binary passing a test CPF as parameter:
 
 ```bash
-./checkCpfCxx 40442820135
+./checkCpfC 40442820135
 ```
 
 #### List of testing CPFs provided by SERPRO:
@@ -98,20 +97,20 @@ The application is composed by a set of source code files:
 
 **app.cxx** : Main file, with `main()` function.<br>
 
-**middleware.hxx** : C++ header file with definitions of functions and SERPRO structures.<br>
-**middleware.cxx** : C++ source file with the core implementation of the REQUEST to SERPRO service.
+**middleware.h** : C header file with definitions of functions and SERPRO structures.<br>
+**middleware.c** : C source file with the core implementation of the REQUEST to SERPRO service.
 
 **README.md** : This file, explaining how the application works.<br>
 **.gitignore** : List of non-versioned files (such as the compiled binary).
 
-After the compilation process, the non-versioned binary file `checkCpfCxx` will be generated.
+After the compilation process, the non-versioned binary file `checkCpfC` will be generated.
 
 ### API Credentials
 
 The application is configured with a personal TOKEN, please change it.<br>
 Its possible to generate a new TOKEN on SERPRO service page: [servicos.serpro.gov.br](https://servicos.serpro.gov.br/inteligencia-de-negocios-serpro/biblioteca/consulta-cpf/teste.html).
 
-The in use TOKEN is specified on the top of `middleware.hxx` file.<br>
+The in use TOKEN is specified on the top of `middleware.h` file.<br>
 If going to production the SERPRO service URL must also be changed (at the same file).
 
 ## Application Info
@@ -124,7 +123,7 @@ Heitor Peralles<br>
 
 ### Source
 
-[github.com/heitorperalles/checkCpfCxx](https://www.github.com/heitorperalles/checkCpfCxx)
+[github.com/heitorperalles/checkCpfC](https://www.github.com/heitorperalles/checkCpfC)
 
 ### License
 
